@@ -43,7 +43,7 @@ before_build:
 build_script:
   - md build && cd build
   - cmake -G "%CMAKE_GENERATOR%" %CMAKE_FLAGS% ..
-  - if %compiler%==mingw ( mingw32-make -j tester examples )
+  - if %compiler%==mingw ( mingw32-make -j 2 tester examples )
     else ( msbuild libui.sln /m:2 /t:Build /p:Configuration=Release /p:Platform=%platform% )
   - cd %APPVEYOR_BUILD_FOLDER%
 
