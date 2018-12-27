@@ -310,7 +310,7 @@ static void drawGrid(ID2D1RenderTarget *rt, D2D1_RECT_F *fillRect)
 	size.width = 100 / 10;
 	size.height = 100 / 10;
 	// yay more ABI bugs
-#ifdef _MSC_VER
+#if 1//def _MSC_VER
 	pformat = rt->GetPixelFormat();
 #else
 	{
