@@ -2,31 +2,31 @@ version: 'build #{build}'
 
 environment:
   matrix:
-    - linking: shared
-      compiler: msvc2013
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    - linking: static
-      compiler: msvc2013
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    - linking: shared
-      compiler: msvc2015
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    - linking: static
-      compiler: msvc2015
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    - linking: shared
-      compiler: msvc2017
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - linking: static
-      compiler: msvc2017
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     - linking: static
       compiler: mingw
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - linking: shared
+      compiler: msvc2013
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    - linking: static
+      compiler: msvc2013
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    - linking: shared
+      compiler: msvc2015
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - linking: static
+      compiler: msvc2015
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - linking: shared
+      compiler: msvc2017
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - linking: static
+      compiler: msvc2017
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 platform:
-  - Win32
   - x64
+  - Win32
 
 before_build:
   - if %compiler%==msvc2013      ( set "CMAKE_GENERATOR=Visual Studio 12 2013" )
