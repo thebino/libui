@@ -41,20 +41,19 @@ include: &toolchain_linux_armhf
       packages:
         - gcc-multilib
         - g++-multilib
-        - libgtk-3-dev:i386
-        # the rest fixes broken dependencies of libgtk:i386
-        - libgirepository-1.0-1:i386
-        - libglib2.0-dev:i386
-        - gir1.2-glib-2.0:i386
-        - gir1.2-atk-1.0:i386
-        - libatk1.0-dev:i386
-        - libfreetype6-dev:i386
-        - libfontconfig1-dev:i386
-        - libcairo2-dev:i386
-        - libgdk-pixbuf2.0-dev:i386
-        - libpango1.0-dev:i386
-        - libxft-dev:i386
-        - libpng12-dev:i386
+        - libgtk-3-dev:armhf
+        - libgirepository-1.0-1:armhf
+        - libglib2.0-dev:armhf
+        - gir1.2-glib-2.0:armhf
+        - gir1.2-atk-1.0:armhf
+        - libatk1.0-dev:armhf
+        - libfreetype6-dev:armhf
+        - libfontconfig1-dev:armhf
+        - libcairo2-dev:armhf
+        - libgdk-pixbuf2.0-dev:armhf
+        - libpango1.0-dev:armhf
+        - libxft-dev:armhf
+        - libpng12-dev:armhf
 
 include: &toolchain_osx_amd64
   os: osx
@@ -76,7 +75,9 @@ matrix:
       <<: *toolchain_osx_amd64
     - env: linking=static arch=amd64
       <<: *toolchain_osx_amd64
-    - env: linking=shared arch=armhf
+    - env: 
+        - linking=shared
+        - arch=armhf
       <<: *toolchain_linux_armhf
 
 install:
