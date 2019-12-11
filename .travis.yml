@@ -32,6 +32,30 @@ include: &toolchain_linux_386
         - libxft-dev:i386
         - libpng12-dev:i386
 
+# armhf toolchain e.g. for single board computers like raspberry pi
+include: &toolchain_linux_armhf
+  os: linux
+  dist: trusty
+  addons:
+    apt:
+      packages:
+        - gcc-multilib
+        - g++-multilib
+        - libgtk-3-dev:i386
+        # the rest fixes broken dependencies of libgtk:i386
+        - libgirepository-1.0-1:i386
+        - libglib2.0-dev:i386
+        - gir1.2-glib-2.0:i386
+        - gir1.2-atk-1.0:i386
+        - libatk1.0-dev:i386
+        - libfreetype6-dev:i386
+        - libfontconfig1-dev:i386
+        - libcairo2-dev:i386
+        - libgdk-pixbuf2.0-dev:i386
+        - libpango1.0-dev:i386
+        - libxft-dev:i386
+        - libpng12-dev:i386
+
 include: &toolchain_osx_amd64
   os: osx
   osx_image: xcode8
@@ -52,6 +76,8 @@ matrix:
       <<: *toolchain_osx_amd64
     - env: linking=static arch=amd64
       <<: *toolchain_osx_amd64
+    - env: linking=shared arch=armhf
+      <<: *toolchain_linux_armhf
 
 install:
   - if [[ "${arch}" == "386" ]]; then
